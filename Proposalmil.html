@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Proposal: AI-Assisted ECG Analysis</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Chosen Palette: Corporate Blue and Slate -->
+    <!-- Application Structure Plan: A single-page, scrolling dashboard design with a sticky navigation bar. -->
+    <!-- Visualization & Content Choices: 1. Heart Failure Comparison: Goal=Compare, Viz=Bar Chart (Chart.js), Interaction=Hover for tooltips. Justification=Directly visualizes the superior AUROC of AI. -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <style>
+        /* ... (KEEP ALL YOUR STYLES UNCHANGED) ... */
+    </style>
+</head>
+<body class="text-slate-700">
+
+    <header id="navbar" class="bg-white/80 backdrop-blur-lg sticky top-0 z-50 shadow-sm">
+        <nav class="container mx-auto px-6 py-3 flex justify-between items-center max-w-7xl">
+            <div class="flex items-center space-x-2">
+                <span class="text-2xl text-blue-600">🩺</span>
+                <span class="text-xl font-bold text-slate-800">Medical AI</span>
+            </div>
+            <div class="hidden md:flex space-x-8">
+                <a href="#challenge" class="text-slate-600 hover:text-blue-600">Challenges</a>
+                <a href="#evolution" class="text-slate-600 hover:text-blue-600">ECG Evolution</a>
+                <a href="#solution" class="text-slate-600 hover:text-blue-600">Solution</a>
+                <a href="#products" class="text-slate-600 hover:text-blue-600">Products</a>
+                <a href="#evidence" class="text-slate-600 hover:text-blue-600">Clinical Evidence</a>
+                <a href="#strengths" class="text-slate-600 hover:text-blue-600">Our Strengths</a>
+                <a href="#military-health" class="text-slate-600 hover:text-blue-600">Military Health</a>
+                <a href="#pipeline" class="text-slate-600 hover:text-blue-600">Pipeline</a>
+                <a href="#roadmap" class="text-slate-600 hover:text-blue-600">Global Roadmap</a>
+                <a href="#business-model" class="text-slate-600 hover:text-blue-600">Business Model</a>
+                <a href="#opportunity" class="text-slate-600 hover:text-blue-600">Opportunity</a>
+            </div>
+            <button id="mobile-menu-button" class="md:hidden p-2 rounded-md text-slate-600 hover:text-blue-600 hover:bg-slate-100">
+                <!-- ... -->
+            </button>
+        </nav>
+        <div id="mobile-menu" class="hidden md:hidden">
+            <!-- ... (KEEP MOBILE NAVIGATION THE SAME) ... -->
+        </div>
+    </header>
+
+    <main>
+        <section id="hero" class="py-20 md:py-32 bg-white">
+            <div class="container mx-auto px-6 text-center max-w-4xl">
+                <h1 class="text-4xl md:text-6xl font-bold text-slate-900 leading-tight">Revolutionizing Heart Care with AI</h1>
+                <p class="mt-6 text-lg md:text-xl text-slate-600">Introducing instant, accurate ECG analysis for early heart disease detection, empowering healthcare professionals worldwide.</p>
+                <a href="#challenge" class="mt-8 inline-block bg-blue-600 text-white font-bold py-3 px-8 rounded-lg hover:bg-blue-700 transition-colors">Learn More</a>
+            </div>
+        </section>
+
+        <section id="challenge" class="py-16 md:py-24">
+            <div class="container mx-auto px-6 max-w-7xl">
+                <div class="text-center max-w-3xl mx-auto">
+                    <span class="text-blue-600 font-semibold">Healthcare Challenges</span>
+                    <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mt-2">The Urgent Burden of Cardiovascular Disease & Military Health</h2>
+                    <p class="mt-4 text-lg text-slate-600">There are significant challenges in early heart disease diagnosis due to vast geography, healthcare access disparities, and limited specialists.</p>
+                </div>
+
+                <div class="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 text-left">
+                    <div class="stat-card md:col-span-2 lg:col-span-1">
+                        <div class="section-icon text-red-500 mb-2">💔</div>
+                        <h3 class="text-xl font-bold text-slate-900">High Mortality & Morbidity</h3>
+                        <ul class="mt-2 text-slate-600 list-disc list-inside space-y-1">
+                            <li>Cardiovascular diseases are a <b>leading cause of death</b> globally.</li>
+                            <li>Stroke and Ischemic Heart Disease are major contributors to disability (DALY).</li>
+                            <li><b>Military Relevance:</b> Heart disease can lead to loss of combat assets and reduced operational capacity.</li>
+                        </ul>
+                    </div>
+                    <div class="stat-card">
+                        <div class="section-icon text-yellow-500 mb-2">📈</div>
+                        <h3 class="text-xl font-bold text-slate-900">Prevalent Risk Factors & Officer Health</h3>
+                        <ul class="mt-2 text-slate-600 list-disc list-inside space-y-1">
+                            <li>Hypertension, diabetes, obesity, and smoking are major global risk factors.</li>
+                            <li><b>Military Relevance:</b> Cardiac health risks among personnel pose significant health risks.</li>
+                        </ul>
+                    </div>
+                    <div class="stat-card md:col-span-2 lg:col-span-1">
+                        <div class="section-icon text-blue-500 mb-2">🩺</div>
+                        <h3 class="text-xl font-bold text-slate-900">Critical Cardiologist Shortage</h3>
+                        <ul class="mt-2 text-slate-600 list-disc list-inside space-y-1">
+                            <li>Shortage of cardiologists and uneven distribution of specialists.</li>
+                            <li>Doctor-to-population ratios below recommended levels in many countries.</li>
+                            <li><b>Military Relevance:</b> Limited access to specialists for military personnel, especially in remote outposts.</li>
+                        </ul>
+                    </div>
+                    <div class="stat-card">
+                        <div class="section-icon text-purple-500 mb-2">🏝️</div>
+                        <h3 class="text-xl font-bold text-slate-900">Geographical Access Gaps & Military Bases</h3>
+                        <ul class="mt-2 text-slate-600 list-disc list-inside space-y-1">
+                            <li>Many remote regions have low healthcare worker density.</li>
+                            <li>Healthcare expenditure is disproportionately higher in urban areas.</li>
+                            <li>Urban dwellers are more likely to use hospital outpatient facilities than rural residents.</li>
+                            <li><b>Military Relevance:</b> Remote military bases and difficult terrain limit access to comprehensive medical facilities and specialized diagnostics.</li>
+                        </ul>
+                    </div>
+                    <div class="stat-card md:col-span-2 lg:col-span-1">
+                        <div class="section-icon text-orange-500 mb-2">⏳</div>
+                        <h3 class="text-xl font-bold text-slate-900">Delayed Diagnosis & Combat Preparedness</h3>
+                        <ul class="mt-2 text-slate-600 list-disc list-inside space-y-1">
+                            <li>Many heart attack patients miss the 'golden hour' for treatment.</li>
+                            <li>Disparities in diagnosis and treatment adherence for chronic conditions like hypertension.</li>
+                            <li><b>Military Relevance:</b> Delayed diagnosis can compromise health and operational readiness.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- KEEP ALL REMAINING SECTIONS, BUT REMOVE/EDIT INDONESIA REFERENCES IN NAVIGATION, HEADINGS, ROADMAP, BUSINESS MODEL, OPPORTUNITY, FOOTER -->
+
+        <section id="evolution" class="py-16 md:py-24 bg-white">
+            <!-- ... (KEEP THIS SECTION UNCHANGED) ... -->
+        </section>
+
+        <section id="solution" class="py-16 md:py-24">
+            <!-- ... (KEEP THIS SECTION UNCHANGED) ... -->
+        </section>
+
+        <section id="products" class="py-16 md:py-24 bg-white">
+            <!-- ... (KEEP THIS SECTION UNCHANGED) ... -->
+        </section>
+
+        <section id="evidence" class="py-16 md:py-24">
+            <!-- ... (KEEP THIS SECTION UNCHANGED) ... -->
+        </section>
+
+        <section id="strengths" class="py-16 md:py-24 bg-white">
+            <!-- ... (KEEP THIS SECTION UNCHANGED) ... -->
+        </section>
+
+        <section id="military-health" class="py-16 md:py-24">
+            <div class="container mx-auto px-6 max-w-7xl">
+                <div class="text-center max-w-3xl mx-auto">
+                    <span class="text-blue-600 font-semibold">Specialized Application</span>
+                    <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mt-2">AI-ECG: A Strategic Asset for Military Health</h2>
+                    <p class="mt-4 text-lg text-slate-600">Proactive heart health management is crucial for maintaining a robust and ready fighting force, preventing unnecessary loss of critical combat personnel.</p>
+                </div>
+                <!-- Remove all “Indonesian National Armed Forces (TNI)”, country-specific numbers, and references to specific regions -->
+                <div class="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 text-left">
+                    <div class="stat-card md:col-span-2 lg:col-span-1">
+                        <div class="section-icon text-green-600 mb-2">💪</div>
+                        <h3 class="text-xl font-bold text-slate-900">Military Overview: Scale & Distribution</h3>
+                        <p class="mt-2 text-slate-600">Military forces operate across vast and challenging geographies, often with distributed units and remote outposts.</p>
+                        <ul class="mt-4 text-slate-600 list-disc list-inside space-y-1">
+                            <li>Extensive personnel and units distributed across numerous regions, including remote outposts.</li>
+                        </ul>
+                    </div>
+                    <div class="stat-card">
+                        <div class="section-icon text-red-600 mb-2">📍</div>
+                        <h3 class="text-xl font-bold text-slate-900">Unique Military Healthcare Challenges</h3>
+                        <ul class="mt-2 text-slate-600 list-disc list-inside space-y-1">
+                            <li><b>Personnel Health Risks:</b> Cardiac health concerns among all ranks.</li>
+                            <li><b>Geographical Barriers:</b> Remote military bases, challenging terrain, and dispersed units limit access to specialized medical facilities.</li>
+                            <li><b>Limited Medical Accessibility:</b> Shortage of cardiologists in military healthcare, reliance on delayed referrals.</li>
+                        </ul>
+                    </div>
+                    <div class="stat-card md:col-span-2 lg:col-span-1">
+                        <div class="section-icon text-blue-600 mb-2">🎯</div>
+                        <h3 class="text-xl font-bold text-slate-900">AI-ECG: A Force Multiplier</h3>
+                        <ul class="mt-2 text-slate-600 list-disc list-inside space-y-1">
+                            <li><b>Immediate Risk Assessment:</b> Rapid 10-second ECG analysis for proactive health management, even in the field.</li>
+                            <li><b>Preserving Combat Assets:</b> Prevents unnecessary loss of trained personnel due to undiagnosed cardiac conditions.</li>
+                            <li><b>Bridging Gaps:</b> Enables advanced screening in remote military clinics, ships, or airbases without specialists.</li>
+                            <li><b>Cost-Effective:</b> Reduces costly medical evacuations for screening/early diagnosis.</li>
+                            <li><b>Data Security:</b> On-premise server ensures confidentiality and integrity of sensitive military health data.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="pipeline" class="py-16 md:py-24 bg-white">
+            <!-- ... (KEEP THIS SECTION UNCHANGED) ... -->
+        </section>
+
+        <section id="roadmap" class="py-16 md:py-24">
+            <div class="container mx-auto px-6 max-w-7xl">
+                <div class="text-center max-w-3xl mx-auto">
+                    <span class="text-blue-600 font-semibold">Future Vision</span>
+                    <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mt-2">Global Roadmap & Commitment</h2>
+                    <p class="mt-4 text-lg text-slate-600">We are on a rapid global expansion trajectory and are committed to redefining heart care worldwide.</p>
+                </div>
+                <div class="mt-12 p-8 bg-slate-50 rounded-xl border border-slate-200">
+                    <h3 class="text-xl font-bold text-slate-800 text-center mb-6">Global Regulatory Approval Targets</h3>
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+                        <div>
+                            <p class="font-bold text-slate-900">United States (FDA)</p>
+                            <p class="text-blue-600 font-semibold">Q4 2025</p>
+                        </div>
+                        <div>
+                            <p class="font-bold text-slate-900">European Union (CE)</p>
+                            <p class="text-blue-600 font-semibold">Q2 2025</p>
+                        </div>
+                        <div>
+                            <p class="font-bold text-slate-900">India (CDSCO)</p>
+                            <p class="text-green-600 font-semibold">Approved Jan 2025</p>
+                        </div>
+                        <!-- Remove Indonesia row -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="business-model" class="py-16 md:py-24 bg-white">
+            <div class="container mx-auto px-6 max-w-7xl">
+                <div class="text-center max-w-3xl mx-auto">
+                    <span class="text-blue-600 font-semibold">Partnership Structure</span>
+                    <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mt-2">Our Flexible Business Model</h2>
+                    <p class="mt-4 text-lg text-slate-600">We offer a collaborative business model designed for mutual success and efficient market penetration, focusing on a sustainable future.</p>
+                </div>
+                <div class="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div class="stat-card text-left">
+                        <div class="section-icon text-blue-600 mb-2">🤝</div>
+                        <h3 class="text-xl font-bold text-slate-900">Local Sale Rights</h3>
+                        <p class="mt-2 text-slate-600 text-sm">Granting local partners the rights to distribute and sell AiTiA™ products, leveraging their market expertise and networks.</p>
+                    </div>
+                    <div class="stat-card text-left">
+                        <div class="section-icon text-blue-600 mb-2">📊</div>
+                        <h3 class="text-xl font-bold text-slate-900">Usage-Based Revenue Model</h3>
+                        <p class="mt-2 text-slate-600 text-sm">Revenue generated per ECG analysis performed, ensuring a scalable and fair compensation structure aligned with actual usage.</p>
+                    </div>
+                    <div class="stat-card text-left">
+                        <div class="section-icon text-blue-600 mb-2">🛠️</div>
+                        <h3 class="text-xl font-bold text-slate-900">Comprehensive Support</h3>
+                        <p class="mt-2 text-slate-600 text-sm">Provision of technical support, installation assistance, ongoing updates, and more, ensuring smooth operation and partner success.</p>
+                    </div>
+                    <div class="stat-card text-left">
+                        <div class="section-icon text-blue-600 mb-2">📜</div>
+                        <h3 class="text-xl font-bold text-slate-900">Legal & Regulatory Compliance</h3>
+                        <p class="mt-2 text-slate-600 text-sm">Assistance with local legal approvals and certifications required for medical device commercialization.</p>
+                    </div>
+                    <div class="stat-card text-left">
+                        <div class="section-icon text-blue-600 mb-2">💲</div>
+                        <h3 class="text-xl font-bold text-slate-900">Transparent Cost Structure</h3>
+                        <p class="mt-2 text-slate-600 text-sm">Clear delineation of revenue sharing and operational expenses, fostering transparency and trust in the partnership.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="opportunity" class="py-16 md:py-24">
+            <div class="container mx-auto px-6 max-w-7xl">
+                <div class="text-center max-w-3xl mx-auto">
+                    <span class="text-blue-600 font-semibold">Opportunity</span>
+                    <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mt-2">Unlocking a New Era of Heart Care & Enhancing Security</h2>
+                    <p class="mt-4 text-lg text-slate-600">The implementation of our AI-ECG technology directly addresses unique healthcare challenges, creating significant opportunities to improve outcomes and efficiency.</p>
+                </div>
+                <div class="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div class="bg-white p-6 rounded-lg border border-slate-200">
+                        <h3 class="font-bold text-slate-900">Improved Access & Equity</h3>
+                        <p class="mt-2 text-slate-600">Extends advanced diagnostic capabilities to primary clinics, remote areas, and even military outposts, reducing healthcare disparities.</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg border border-slate-200">
+                        <h3 class="font-bold text-slate-900">Healthcare System Efficiency & Cost Savings</h3>
+                        <p class="mt-2 text-slate-600">Optimizes the use of expensive resources like echocardiography and reduces emergency department length of stay, leading to significant cost savings.</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg border border-slate-200">
+                        <h3 class="font-bold text-slate-900">Enhanced Patient Outcomes & Personnel Retention</h3>
+                        <p class="mt-2 text-slate-600">Earlier detection means earlier treatment, directly improving survival rates and quality of life for patients with cardiovascular diseases.</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg border border-slate-200">
+                        <h3 class="font-bold text-slate-900">Empowerment of Medical Professionals</h3>
+                        <p class="mt-2 text-slate-600">Provides powerful decision-support tools to general practitioners and nurses, enabling them to make more accurate triage and referral decisions.</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg border border-slate-200 lg:col-span-2">
+                        <h3 class="font-bold text-slate-900">Combat Preparedness & Security</h3>
+                        <p class="mt-2 text-slate-600">By proactively identifying and managing cardiac risks among personnel, AiTiA™ directly contributes to maintaining a healthy, ready force.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <footer class="bg-slate-800 text-white">
+        <div class="container mx-auto py-12 px-6 max-w-7xl text-center">
+            <h2 class="text-2xl font-bold">Let's Discuss Further</h2>
+            <p class="mt-4 max-w-2xl mx-auto text-slate-300">We are ready to initiate a discussion on how our technology can be tailored for your healthcare sector priorities and explore potential partnerships.</p>
+            <p class="mt-6 font-semibold text-blue-300">Medical AI & MAI Global</p>
+        </div>
+    </footer>
+
+    <script>
+        // ... (KEEP YOUR SCRIPT UNCHANGED) ...
+    </script>
+
+</body>
+</html>
