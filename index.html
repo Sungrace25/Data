@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="AiTiA™ by Medical AI: Advanced AI-assisted ECG analysis for rapid, accurate heart failure and heart attack diagnosis.">
+    <title>AiTiA™: AI-Assisted ECG Analysis</title>
+    <script src="https://cdn.jsdelivr.net/npm/react@18.2.0/umd/react.production.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/react-dom@18.2.0/umd/react-dom.production.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/babel-standalone@7.22.10/babel.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100">
+    <div id="root"></div>
+    <script type="text/babel">
+        class ErrorBoundary extends React.Component {
+            state = { hasError: false };
+            static getDerivedStateFromError(error) {
+                return { hasError: true };
+            }
+            render() {
+                if (this.state.hasError) {
+                    return (
+                        <div class="text-center py-12">
+                            <h2 class="text-2xl font-bold text-red-600">Something went wrong.</h2>
+                            <p class="mt-4 text-gray-600">Please refresh the page or contact support.</p>
+                        </div>
+                    );
+                }
+                return this.props.children;
+            }
+        }
+
+        function Header() {
+            return (
+                <header class="bg-blue-700 text-white py-8 text-center">
+                    <h1 class="text-4xl md:text-5xl font-bold">AiTiA™: Revolutionizing ECG Analysis</h1>
+                    <p class="mt-3 text-lg md:text-xl">Advanced AI for Rapid, Accurate Heart Failure and Heart Attack Diagnosis</p>
+                </header>
+            );
+        }
+
+        function FeatureCard({ title, description }) {
+            return (
+                <div class="bg-white p-6 rounded-lg shadow-md" role="region" aria-label={title}>
+                    <h3 class="text-xl font-semibold text-blue-700">{title}</h3>
+                    <p class="mt-2 text-gray-600">{description}</p>
+                </div>
+            );
+        }
+
+        function AccuracyChart() {
+            React.useEffect(() => {
+                const ctx = document.getElementById('accuracyChart').getContext('2d');
+                new Chart(ctx, {
+                    type: 'bar',
+                    data: {
+                        labels: ['AiTiA™ LVSD', 'NT-proBNP'],
+                        datasets: [{
+                            label: 'AUROC',
+                            data: [0.919, 0.720],
+                            backgroundColor: ['#1d4ed8', '#6b7280'],
+                            borderColor: ['#1e3a8a', '#4b5563'],
+                            borderWidth: 1
+                        }]
+                    },
+                    options: {
+                        scales: {
+                            y: {
+                                beginAtZero: true,
+                                max: 1,
+                                title: {
+                                    display: true,
+                                    text: 'AUROC'
+                                }
+                            }
+                        },
+                        plugins: {
+                            legend: {
+                                display: false
+                            }
+                        }
+                    }
+                });
+            }, []);
+
+            return (
+                <div class="bg-white p-6 rounded-lg shadow-md text-center">
+                    <h3 class="text-xl font-semibold text-blue-700">Unmatched Diagnostic Accuracy</h3>
+                    <p class="mt-2 text-gray-600">AiTiA™ LVSD outperforms traditional blood tests (KFDA-certified)</p>
+                    <canvas id="accuracyChart" class="mt-4 mx-auto" width="400" height="200"></canvas>
+                </div>
+            );
+        }
+
+        function MainContent() {
+            return (
+                <div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
+                    <section class="text-center mb-12">
+                        <h2 class="text-3xl font-bold text-gray-800">The Evolution of ECG</h2>
+                        <p class="mt-4 text-gray-600 max-w-3xl mx-auto">
+                            From traditional paper-based ECG to AI-driven diagnostics, AiTiA™ integrates with existing 12-lead ECG systems to deliver results in 10 seconds, enhancing clinical decision-making.
+                        </p>
+                    </section>
+                    <section class="mb-12">
+                        <h2 class="text-2xl font-bold text-gray-800 text-center">Core Capabilities</h2>
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-6">
+                            <FeatureCard 
+                                title="Big Data" 
+                                description="Over 4.3M high-quality ECG datasets from 24 years, validated through national projects." 
+                            />
+                            <FeatureCard 
+                                title="Supercomputer" 
+                                description="100 PetaFLOPs supercomputer with 160 NVIDIA A100 GPUs for advanced AI modeling." 
+                            />
+                            <FeatureCard 
+                                title="Innovative Products" 
+                                description="AiTiA™ LVSD and MI provide rapid, accurate diagnosis with on-premise AI servers." 
+                            />
+                        </div>
+                    </section>
+                    <section class="mb-12">
+                        <h2 class="text-2xl font-bold text-gray-800 text-center">Our Products</h2>
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-6">
+                            <FeatureCard 
+                                title="AiTiA™ LVSD" 
+                                description="Diagnoses heart failure (LVSD) in 10 seconds with 91.9% accuracy, surpassing blood tests (AUROC 0.720)." 
+                            />
+                            <FeatureCard 
+                                title="AiTiA™ MI" 
+                                description="Detects myocardial infarction, including NSTEMI, with 87.8% accuracy, reducing missed diagnoses." 
+                            />
+                            <FeatureCard 
+                                title="AiTiA™ LVSD-1L" 
+                                description="Smartwatch-based 2-lead ECG monitoring for heart failure patients, improving outcomes." 
+                            />
+                        </div>
+                    </section>
+                    <section class="mb-12">
+                        <AccuracyChart />
+                    </section>
+                    <section class="text-center mb-12">
+                        <h2 class="text-2xl font-bold text-gray-800">Global Impact & Expansion</h2>
+                        <p class="mt-4 text-gray-600 max-w-3xl mx-auto">
+                            With 30+ diseases in our AI pipeline and plans for FDA, CE, and CDSCO approvals, AiTiA™ is set to transform cardiac care worldwide.
+                        </p>
+                    </section>
+                    <section class="text-center">
+                        <h2 class="text-2xl font-bold text-gray-800">Backed by Research Excellence</h2>
+                        <p class="mt-4 text-gray-600 max-w-3xl mx-auto">
+                            Supported by extensive clinical trials and publications, including the 2025 ROMIAE study in the European Heart Journal.
+                        </p>
+                        <a 
+                            href="https://x.ai" 
+                            class="mt-6 inline-block bg-blue-700 text-white py-3 px-8 rounded-lg hover:bg-blue-800 transition"
+                            aria-label="Learn more about AiTiA™ ECG analysis"
+                        >
+                            Learn More
+                        </a>
+                    </section>
+                </div>
+            );
+        }
+
+        function App() {
+            return (
+                <ErrorBoundary>
+                    <div>
+                        <Header />
+                        <MainContent />
+                    </div>
+                </ErrorBoundary>
+            );
+        }
+
+        const root = ReactDOM.createRoot(document.getElementById('root'));
+        root.render(<App />);
+    </script>
+</body>
+</html>
